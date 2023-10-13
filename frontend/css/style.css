@@ -1,0 +1,32 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: rgb(53, 52, 52);
+}
+
+table {
+  border-collapse: collapse;
+  text-align: center;
+  width: 90%;
+  color: #ffff;
+  table-layout: fixed;
+}
+
+table tr:nth-child(even) {
+  background-color: grey;
+}
+th {
+  text-transform: uppercase;
+}
+th:hover {
+  background-color: rgb(180, 94, 63);
+}
+th,
+td {
+  padding: 10px;
+  resize: both;
+  overflow: hidden;
+}
