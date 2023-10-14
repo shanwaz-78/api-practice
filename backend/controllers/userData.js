@@ -1,12 +1,11 @@
 const connection = require("../database/connection");
 
 const userData = async (req, res) => {
-  const data = req.body;
-
+  const data1 = req.body;
   const query =
     "INSERT INTO userData (id, name, email, phone, website) VALUES (?, ?, ?, ?, ?)";
 
-  if (data.length === 0) {
+  if (data1.length === 0) {
     return res
       .status(400)
       .json({ error: "No data received from the frontend" });
@@ -24,8 +23,8 @@ const userData = async (req, res) => {
     });
   };
 
-  for (let i = 0; i < data.length; i++) {
-    const { id, name, email, phone, website } = data[i];
+  for (let i = 0; i < data1.length; i++) {
+    const { id, name, email, phone, website } = data1[i];
     try {
       const dataExists = await checkDataExistence();
       if (dataExists) {
@@ -33,23 +32,22 @@ const userData = async (req, res) => {
           .status(400)
           .send({ error: `data is already exists in the database` });
       }
+      connection.query(
+        query,
+        [id, name, email, phone, website],
+        (err, result) => {
+          if (err) {
+            console.error("Database error:", err);
+            return res
+              .status(500)
+              .send({ error: "Error inserting data into the database" });
+          }
+        }
+      );
     } catch (error) {
       console.log(error);
     }
-    connection.query(
-      query,
-      [id, name, email, phone, website],
-      (err, result) => {
-        if (err) {
-          console.error("Database error:", err);
-          return res
-            .status(500)
-            .send({ error: "Error inserting data into the database" });
-        }
-      }
-    );
   }
-
   res.status(200).json({ message: "Data inserted successfully" });
 };
 
