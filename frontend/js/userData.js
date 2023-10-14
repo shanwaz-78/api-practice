@@ -2,7 +2,7 @@ async function fetchUserData(url) {
   try {
     const response = await fetch(url);
     if (!response.ok) {
-      throw new Error(`Cannot fetch user data from: ${url}`);
+      throw new Error(`Invalid API`);
     }
     const data = await response.json();
     return data;
@@ -10,7 +10,6 @@ async function fetchUserData(url) {
     console.log(error)
   }
 }
-
 async function postFetchedData(api) {
   try {
     const data = await fetchUserData('https://jsonplaceholder.typicode.com/users/');

@@ -15,12 +15,18 @@ async function fetchData(url) {
 
 function generateHeadings(headings) {
   const tr = document.createElement("tr");
-  for (let i = 0; i < headings.length; i++) {
+  headings.forEach((heading) => {
     const th = document.createElement("th");
-    th.textContent = headings[i];
+    th.textContent = heading;
     tr.appendChild(th);
-  }
+  });
   tBody.appendChild(tr);
+}
+
+function editOption() {
+  const button = document.createElement("button");
+  button.textContent = "Edit";
+  return button;
 }
 
 async function addTableData() {
@@ -32,7 +38,7 @@ async function addTableData() {
     const emailField = document.createElement("td");
     const phoneField = document.createElement("td");
     const websiteField = document.createElement("td");
-
+    const editableButton = editOption();
     idField.textContent = element.id;
     nameField.textContent = element.name;
     emailField.textContent = element.email;
@@ -44,10 +50,11 @@ async function addTableData() {
     tr.appendChild(emailField);
     tr.appendChild(phoneField);
     tr.appendChild(websiteField);
+    tr.appendChild(editableButton);
 
     tBody.appendChild(tr);
   });
 }
 
-generateHeadings(["id", "name", "email", "phone", "website"]);
+generateHeadings(["id", "name", "email", "phone", "website", "Edit"]);
 addTableData();

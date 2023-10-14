@@ -20,13 +20,39 @@ table tr:nth-child(even) {
 }
 th {
   text-transform: uppercase;
+  background: linear-gradient(to bottom, rgb(180, 94, 63) 10%, #0f0f00);
 }
 th:hover {
   background-color: rgb(180, 94, 63);
 }
 th,
 td {
+  font-size: 17px;
   padding: 10px;
   resize: both;
   overflow: hidden;
+}
+button {
+  padding: 8px 8px;
+  font-size: 0.9rem;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  margin: 10px 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  transition: 0.2s all ease-in-out;
+  -webkit-transition: 0.2s all ease-in-out;
+  -moz-transition: 0.2s all ease-in-out;
+  -ms-transition: 0.2s all ease-in-out;
+  -o-transition: 0.2s all ease-in-out;
+}
+button:hover {
+  transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  -o-transform: scale(1.2);
 }
