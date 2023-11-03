@@ -1,4 +1,4 @@
-# To Run This Project in Your System Download packages.
+# To Test This Project in Your System Download packages.
 ```
 1. npm i
 ```
